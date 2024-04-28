@@ -69,9 +69,10 @@ exports.edit = (req, res) => {
 exports.update = (req, res) => {
     let id = req.params.id;
     let hourSelect = parseInt(req.body.hourSelect);
-    let BookID = req.body.BookID
+    let BookID = req.body.BookID;
+    let Price = req.body.Price;
 
-    Product.update(id, hourSelect, BookID, (err) => {
+    Product.update(id, hourSelect, Price, BookID, (err) => {
         if (err) {
             res.render('error', {
                 message: err.sqlMessage,

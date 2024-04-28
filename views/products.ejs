@@ -34,6 +34,7 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
+                                    <th>Price ( $ )</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -42,6 +43,7 @@
                                     <tr>
                                         <td scope="row"><%= item.AuctionID %></td>
                                         <td scope="row"><%= item.Title %></td>
+                                        <td scope="row"><%= item.price %></td>
                                         <td scope="row"><%= item.Status %></td>
                                         <td class="text-right">
                                             <a href="/edit-product/<%= item.AuctionID %>" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> EDIT</a>

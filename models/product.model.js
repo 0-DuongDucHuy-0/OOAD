@@ -39,7 +39,7 @@ Product.getAll = async (req, callback) => {
     });
 };
 
-Product.store = (hourSelect, BookID, callback) => {
+Product.store = (hourSelect, BookID, Price, callback) => {
     let ts = Date.now();
     let date_ob = new Date(ts);
 
@@ -99,7 +99,7 @@ Product.getOne = (id, callback) => {
     });
 };
 
-Product.update = (id, hourSelect, BookID, callback) => {
+Product.update = (id, hourSelect, Price, BookID, callback) => {
     let ts = Date.now();
     let date_ob = new Date(ts);
 
@@ -125,6 +125,7 @@ Product.update = (id, hourSelect, BookID, callback) => {
         StartTime: StartTime,
         EndTime: EndTime,
         Status: "Đang diễn ra",
+        price: Price,
     };
 
     let sql = "UPDATE auctions SET ? WHERE AuctionID = ?";
