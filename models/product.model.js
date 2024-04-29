@@ -65,6 +65,7 @@ Product.store = (hourSelect, BookID, Price, callback) => {
         StartTime: StartTime,
         EndTime: EndTime,
         Status: "Đang diễn ra",
+        price: Price,
     };
 
     let sql = "INSERT INTO auctions SET ?"

@@ -23,8 +23,9 @@ exports.create = (req, res) => {
 exports.store = (req, res) => {
     let hoursSelect = parseInt(req.body.hourSelect);
     let BookID = req.body.BookID;
+    let Price = req.body.Price;
 
-    Product.store(hoursSelect, BookID, (err, data) => {
+    Product.store(hoursSelect, BookID, Price, (err, data) => {
         if (err) {
             res.render('error', {
                 message: err.sqlMessage,
