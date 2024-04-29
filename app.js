@@ -13,7 +13,11 @@ app.use(express.static('public'));
 require('./routers/login.router')(app);
 app.use(function(req, res, next) {
     let accountJSON = sessionStorage.getItem('admin_login');
-    console.log(accountJSON);
+    if (accountJSON) {
+        global.account = JSON.parse(accountJSON);
+        next();
+    } 
+    accountJSON = sessionStorage.getItem('user_login');
     if (accountJSON) {
         global.account = JSON.parse(accountJSON);
         next();
