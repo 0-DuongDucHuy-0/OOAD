@@ -6,7 +6,7 @@ const Product = require('../models/product.model');
 
 exports.index = async (req, res) => {
     Product.getAll(req, (err, data, totalPages, _page, _name) => {
-        res.render('products', {
+        res.render('products-admin', {
             title: 'Quản lý đấu giá',
             data: data ? data : [],
             totalPages: totalPages,
@@ -32,7 +32,7 @@ exports.store = (req, res) => {
                 code: err.errno,
             })
         } else {
-            res.redirect('/products');
+            res.redirect('/products-admin');
         }            
     });
 };
@@ -46,7 +46,7 @@ exports.delete = (req, res) => {
                 code: err.errno,
             })
         } else {
-            res.redirect('/products');
+            res.redirect('/products-admin');
         }
     });
 };
@@ -80,7 +80,7 @@ exports.update = (req, res) => {
                 code: err.errno,
             });
         } else {
-            res.redirect('/products');
+            res.redirect('/products-admin');
         }
     });
 };

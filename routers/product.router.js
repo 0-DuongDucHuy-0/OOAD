@@ -1,15 +1,14 @@
-productCtrl = require('../controllers/product.controller');
+productAdminCtrl = require('../controllers/product-admin.controller');
+productUserCtrl = require('../controllers/product-user.controller');
 
 module.exports = (app) => {
-    app.get('/products', productCtrl.index);
+    app.get('/products-user', productUserCtrl.index);
+    app.get('/buy-product/:id', productUserCtrl.buy);
 
-    app.get('/add-product', productCtrl.create);
-    
-    app.post('/add-product', productCtrl.store);
-    
-    app.get('/delete-product/:id', productCtrl.delete);
-    
-    app.get('/edit-product/:id', productCtrl.edit);
-    
-    app.post('/edit-product/:id', productCtrl.update);
+    app.get('/products-admin', productAdminCtrl.index);
+    app.get('/add-product', productAdminCtrl.create);
+    app.post('/add-product', productAdminCtrl.store);
+    app.get('/delete-product/:id', productAdminCtrl.delete);
+    app.get('/edit-product/:id', productAdminCtrl.edit);
+    app.post('/edit-product/:id', productAdminCtrl.update);
 };

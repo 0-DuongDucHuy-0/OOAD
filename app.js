@@ -14,21 +14,23 @@ require('./routers/login.router')(app);
 app.use(function(req, res, next) {
     let accountJSON = sessionStorage.getItem('admin_login');
     if (accountJSON) {
-        global.account = JSON.parse(accountJSON);
-        next();
-    } 
-    accountJSON = sessionStorage.getItem('user_login');
-    if (accountJSON) {
+        console.log(accountJSON)
         global.account = JSON.parse(accountJSON);
         next();
     } else {
-        res.redirect('/login');
-    }
+        accountJSON = sessionStorage.getItem('user_login');
+        console.log(accountJSON)
+        if (accountJSON) {
+            global.account = JSON.parse(accountJSON);
+            next();
+        } else {
+            res.redirect('/login');
+        }
+    } 
 });
 
 
 require('./routers/home.router')(app);
-
 require('./routers/product.router')(app);
 
 app.listen(POST, function() {

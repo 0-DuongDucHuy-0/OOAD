@@ -1,0 +1,60 @@
+<%- include('header') %>
+
+    <%- include('aside-user') %>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Mô tả sản phẩm
+                </h1>
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <!-- Default box -->
+                <div class="box">
+                    <div class="box-body">
+                        <div class="col-md-4">
+                            <form action="" method="POST" role="form">
+                    
+                                <div class="form-group">
+                                    <label for="">Tiêu đề</label>
+                                    <input type="text" class="form-control" id="" name="Title" value="<%= cat.Title %>" readonly>
+                                    <br>
+                                    <label for="">Tác giả</label>
+                                    <input type="text" class="form-control" id="" name="Author" value="<%= cat.Author %>" readonly>
+                                    <br>
+                                    <label for="">Năm xuất bản</label>
+                                    <input type="text" class="form-control" id="" name="PublicationYear" value="<%= cat.PublicationYear %>" readonly>
+                                    <br>
+                                    <label for="">Giá khởi điểm</label>
+                                    <input type="text" class="form-control" id="" name="StartingBid" value="<%= cat.StartingBid %>" readonly>
+                                    <br>
+                                    <label for="">Tình trạng sách</label>
+                                    <input type="text" class="form-control" id="" name="BookCondition" value="<%= cat.BookCondition %>" readonly>
+                                    <br>
+                                    <label for="">Mô tả sách</label>
+                                    <textarea class="form-control" id="" name="BookDescription" readonly><%= cat.BookDescription %></textarea>
+                                </div>
+      
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Submit</button>
+                                <a href="/products" class="btn btn-primary pull-right"><i class="fa fa-arrow-left"
+                                        aria-hidden="true"></i> Quay lại</a>
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /.box -->
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <%- include('footer') %>

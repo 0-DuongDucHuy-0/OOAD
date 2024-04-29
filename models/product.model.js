@@ -91,7 +91,7 @@ Product.delete = (id, callback) => {
 };
 
 Product.getOne = (id, callback) => {
-    ketnoi.query("SELECT * FROM auctions WHERE AuctionID = ?", [id], (err, data) => {
+    ketnoi.query("SELECT * FROM auctions JOIN books ON auctions.BookID = books.BookID WHERE AuctionID = ?", [id], (err, data) => {
         if (err) {
             callback(err, null);
         } else {

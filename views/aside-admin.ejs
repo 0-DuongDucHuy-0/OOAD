@@ -26,18 +26,22 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li>
-                <a href="/">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                    <small class="label pull-right bg-green">Hot</small>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-user"></i> <span>Khách hàng</span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
+                <ul class="treeview-menu">
+                    <li><a href="products-admin"><i class="fa fa-circle-o"></i>Danh sách khách hàng</a></li>
+                    <li><a href="add-product"><i class="fa fa-circle-o"></i>Nạp tiền </a></li>
+                </ul>
             </li>
+            
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-th"></i> <span>Sản phẩm</span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="products"><i class="fa fa-circle-o"></i>Danh sách sản phẩm</a></li>
+                    <li><a href="products-admin"><i class="fa fa-circle-o"></i>Danh sách sản phẩm</a></li>
                     <li><a href="add-product"><i class="fa fa-circle-o"></i>Thêm sản phẩm</a></li>
                 </ul>
             </li>

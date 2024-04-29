@@ -1,7 +1,9 @@
 <%- include('header') %>
-
-    <%- include('aside') %>
-
+<% if (account.Role == "admin") { %>
+    <%- include('aside-admin') %>
+<% } else { %>
+    <%- include('aside-user') %>
+<% } %>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->

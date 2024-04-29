@@ -1,6 +1,6 @@
 <%- include('header') %>
 
-    <%- include('aside') %>
+    <%- include('aside-admin') %>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -58,17 +58,17 @@
                     <div class="box-footer">
                         <ul class="pagination">
                             <% if(_name) { %>
-                                <li><a href="/products/?page=<%= _page>1 ? _page-1 : 1 %>&name=<%= _name %>">&laquo;</a></li>
+                                <li><a href="/products-admin/?page=<%= _page>1 ? _page-1 : 1 %>&name=<%= _name %>">&laquo;</a></li>
                                 <% for(i =1; i <= totalPages; i++) { %>
-                                    <li class="<%= _page == i ? 'active' : '' %>"><a href="/products/?page=<%= i %>&name=<%= _name %>"><%= i %></a></li>
+                                    <li class="<%= _page == i ? 'active' : '' %>"><a href="/products-admin/?page=<%= i %>&name=<%= _name %>"><%= i %></a></li>
                                 <% } %>
-                                <li><a href="/products/?page=<%= _page < totalPages ? _page+1 : totalPages %>&name=<%= _name %>">&raquo;</a></li>
+                                <li><a href="/products-admin/?page=<%= _page < totalPages ? _page+1 : totalPages %>&name=<%= _name %>">&raquo;</a></li>
                             <% } else { %> 
-                                <li><a href="/products/?page=<%= _page>1 ? _page-1 : 1 %>">&laquo;</a></li>
+                                <li><a href="/products-admin/?page=<%= _page>1 ? _page-1 : 1 %>">&laquo;</a></li>
                                 <% for(i =1; i <= totalPages; i++) { %>
-                                    <li class="<%= _page == i ? 'active' : '' %>"><a href="/products/?page=<%= i %>"><%= i %></a></li>
+                                    <li class="<%= _page == i ? 'active' : '' %>"><a href="/products-admin/?page=<%= i %>"><%= i %></a></li>
                                 <% } %>
-                                <li><a href="/products/?page=<%= _page < totalPages ? _page+1 : totalPages %>">&raquo;</a></li>
+                                <li><a href="/products-admin/?page=<%= _page < totalPages ? _page+1 : totalPages %>">&raquo;</a></li>
                             <% } %>   
                         </ul>
                     </div>
