@@ -27,6 +27,7 @@ exports.buy = (req, res) => {
         } else {
             res.render('buy-product', {
                 cat: data,
+                msg: ""
             });
         }
     });
@@ -56,7 +57,20 @@ exports.buySuccessful = (req, res) => {
                 code: err.errno,
             })
         } else {
-            res.redirect('/products-user');
+            let id = req.params.id;
+            Product.getOne(id, (err, data) => {
+                if (err) {
+                    res.render('error', {
+                        message: err.sqlMessage,
+                        code: err.errno,
+                    });
+                } else {
+                    res.render('buy-product', {
+                        cat: data,
+                        msg: "Ra giá thành công !!!"
+                    });
+                }
+            });
         }            
     });
 };
