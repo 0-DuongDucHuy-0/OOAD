@@ -140,4 +140,19 @@ Product.update = (id, hourSelect, Price, BookID, callback) => {
     });
 };
 
+Product.buySuccessful = (bidsData, callback) => {
+
+    let sql = "INSERT INTO bids SET ?";
+
+    console.log(bidsData);
+
+    ketnoi.query(sql, bidsData, (err, data) => {
+        if (err) {
+            callback(err, null);
+        } else {
+            callback(null, data);
+        }
+    });
+};
+
 module.exports = Product;

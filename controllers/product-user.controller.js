@@ -32,6 +32,35 @@ exports.buy = (req, res) => {
     });
 };
 
+exports.buySuccessful = (req, res) => {
+    var currentdate = new Date(); 
+    var datetime = currentdate.getFullYear() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getDate() + " "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+
+
+    let bidsData = {
+        AuctionID : req.body.AuctionID,
+        UserID : req.body.UserID,
+        BidAmount : req.body.Price,
+        BidTime : datetime,
+    }
+
+    Product.buySuccessful(bidsData, (err, data) => {
+        if (err) {
+            res.render('error', {
+                message: err.sqlMessage,
+                code: err.errno,
+            })
+        } else {
+            res.redirect('/products-user');
+        }            
+    });
+};
+
 
 // exports.create = (req, res) => {
 //     res.render('add-product');

@@ -21,6 +21,10 @@
                             <form action="" method="POST" role="form">
                     
                                 <div class="form-group">
+                                    <input type="text" class="form-control" id="" name="AuctionID" value="<%= cat.AuctionID %>" readonly style="display: none;">
+                                    <input type="text" class="form-control" id="" name="UserID" value="<%= account.UserID %>" readonly style="display: none;">
+                                    <input type="text" class="form-control" id="" name="EndTime" value="<%= cat.EndTime %>" readonly style="display: none;">
+
                                     <label for="">Tiêu đề</label>
                                     <input type="text" class="form-control" id="" name="Title" value="<%= cat.Title %>" readonly>
                                     <br>
@@ -30,25 +34,31 @@
                                     <label for="">Năm xuất bản</label>
                                     <input type="text" class="form-control" id="" name="PublicationYear" value="<%= cat.PublicationYear %>" readonly>
                                     <br>
-                                    <label for="">Giá khởi điểm</label>
-                                    <input type="text" class="form-control" id="" name="StartingBid" value="<%= cat.StartingBid %>" readonly>
-                                    <br>
                                     <label for="">Tình trạng sách</label>
                                     <input type="text" class="form-control" id="" name="BookCondition" value="<%= cat.BookCondition %>" readonly>
                                     <br>
                                     <label for="">Mô tả sách</label>
                                     <textarea class="form-control" id="" name="BookDescription" readonly><%= cat.BookDescription %></textarea>
+                                    <br>
+                                    <label for="">Giá khởi điểm</label>
+                                    <input type="text" class="form-control" id="startingBid" name="StartingBid" value="<%= cat.StartingBid %>" readonly>
+                                    <br>
+                                    <label for="">Giá</label>
+                                    <input type="text" class="form-control" id="price" name="Price" value="<%= cat.StartingBid + 10 %>">
+                                    <br>
+                                    <button type="button" onclick="increasePrice()">Tăng giá</button>
+                                    <button type="button" onclick="decreasePrice()">Giảm giá</button>
+                                    <br>
+                                    <div id="errorMessage" style="color: red; display: none;">Giá không thể nhỏ hơn <%= cat.StartingBid + 10 %> !</div>
                                 </div>
       
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Submit</button>
-                                <a href="/products" class="btn btn-primary pull-right"><i class="fa fa-arrow-left"
+                                <a href="/products-user" class="btn btn-primary pull-right"><i class="fa fa-arrow-left"
                                         aria-hidden="true"></i> Quay lại</a>
                             </form>
 
                         </div>
                     </div>
-
-
                 </div>
                 <!-- /.box -->
 
@@ -58,3 +68,43 @@
         <!-- /.content-wrapper -->
 
         <%- include('footer') %>
+        <script>
+            function increasePrice() {
+                document.getElementById('errorMessage').style.display = 'none';
+                var priceInput = document.getElementById('price');
+                var currentPrice = parseFloat(priceInput.value);
+                var newPrice = currentPrice + 10; // Tăng giá tối thiểu là 10
+                priceInput.value = newPrice.toFixed(2); // Đảm bảo giữ hai chữ số sau dấu thập phân
+            }
+
+            function decreasePrice() {
+                var StartingBid = parseFloat((document.getElementById('startingBid')).value);
+                var priceInput = document.getElementById('price');
+                var currentPrice = parseFloat(priceInput.value);
+                var newPrice = currentPrice - 10; // Giảm giá tối thiểu là 10
+                if (newPrice >= StartingBid + 10) {
+                    priceInput.value = newPrice.toFixed(2); // Đảm bảo giữ hai chữ số sau dấu thập phân
+                    document.getElementById('errorMessage').style.display = 'none';
+                } else {
+                    document.getElementById('errorMessage').style.display = 'block';
+                }
+            }
+
+            function formatDateTime(dateTimeString) {
+                var dateTime = new Date(dateTimeString);
+                
+                // Lấy các thành phần của ngày tháng
+                var year = dateTime.getFullYear();
+                var month = ('0' + (dateTime.getMonth() + 1)).slice(-2);
+                var day = ('0' + dateTime.getDate()).slice(-2);
+                var hours = ('0' + dateTime.getHours()).slice(-2);
+                var minutes = ('0' + dateTime.getMinutes()).slice(-2);
+                var seconds = ('0' + dateTime.getSeconds()).slice(-2);
+                
+                // Tạo chuỗi định dạng "yyyy-MM-dd HH:mm:ss"
+                var formattedDateTime = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+                
+                return formattedDateTime;
+            }
+        </script>
+        

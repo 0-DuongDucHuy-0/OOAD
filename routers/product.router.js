@@ -4,6 +4,7 @@ productUserCtrl = require('../controllers/product-user.controller');
 module.exports = (app) => {
     app.get('/products-user', productUserCtrl.index);
     app.get('/buy-product/:id', productUserCtrl.buy);
+    app.post('/buy-product/:id', productUserCtrl.buySuccessful);
 
     app.get('/products-admin', productAdminCtrl.index);
     app.get('/add-product', productAdminCtrl.create);
